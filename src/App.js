@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { useState } from 'react';
+import './index.css';
+
+const App=()=> {
+  const[diceNum, setDiceNum]= useState(6)
+  const refreshDice =()=>{
+   const randomNum= Math.floor(Math.random()*6)+1
+  setDiceNum(randomNum)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <center>
+      <img height={300} width={300} src= {require(`./assets/${diceNum}.png`)}></img>
+      <br/>
+      <button onClick={()=> refreshDice()} className='button'>Roll</button>
+      </center>
     </div>
+
   );
 }
 
